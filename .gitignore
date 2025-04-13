@@ -1,0 +1,45 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__
+*.so
+
+# Django
+*.log
+*.pot
+*.pyc
+*.db
+*.sqlite3
+*.log
+local_settings.py
+db.sqlite3
+
+# VS Code
+.vscode/
+
+# IDEs
+.idea/
+*.iml
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+env
+.env
+*.env
+
+# Pytest
+.cache/
+
+# Coverage reports
+.coverage
+*.coveragerc
+
+# Build directories
+build/
+dist/
+eggs/
+*.egg-info/

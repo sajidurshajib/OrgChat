@@ -1,0 +1,12 @@
+django 
+djangorestframework
+drf-yasg
+drf-yasg[validation]
+djangorestframework-simplejwt
+gunicorn
+python-dotenv
+psycopg2-binary
+django-cors-headers
+channels
+channels_redis
+daphne
