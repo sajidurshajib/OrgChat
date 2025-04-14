@@ -1,10 +1,10 @@
 from rest_framework import generics
 from rest_framework.views import APIView
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import get_user_model
-from .serializers import RegisterSerializer, UserSerializer
+from .serializers import RegisterSerializer, UserSerializer, RoleSerializer
+from .models import Role
 
 User = get_user_model()
 
@@ -21,10 +21,9 @@ class UserView(APIView):
         return Response(serializer.data)
 
 
-@api_view(['GET'])
-def index(request):
-    msg = {
-        'msg': 'check message!'
-    }
-    return Response(msg)
+class UpdateOwnRoleView(generics.RetrieveUpdateAPIView):
+    serializer_class = RoleSerializer
+    permission_classes = [IsAuthenticated]
 
+    def get_object(self):
+        return Role.objects.get(user=self.request.user)
