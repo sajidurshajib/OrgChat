@@ -1,14 +1,15 @@
 # OrgChat
 One on One chat for Organization
 
-## Features
-
-## Tech Stack
-
 ## Setup Instruction
 
-## API
+**Build:** Use `make up` command and you will find all command in `Makefile`.
 
-docker exec -it a27 python orgchat/manage.py createsuperuser
-Signals for create profile
+**Create superuser:**  `docker exec -it [orgchat-web container id] python orgchat/manage.py createsuperuser` 
+
+**Bulk insert:** Bulk insert some `organization`. Only super user can do that.
+
+**User registration:**  After user registration user need to update his/her role by selectring his/her position in organization and need to add ogranization id. 
+
+## API
 
