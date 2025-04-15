@@ -6,10 +6,17 @@ from .models import Organization
 from .serializers import OrganizationSerializer
 from utils.superuser import IsSuperUser
 
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
+
+
 class BulkOrganizationAPI(APIView):
     permission_classes = [IsSuperUser]
 
-    
+    @swagger_auto_schema(
+        request_body=OrganizationSerializer(many=True),
+        responses={201: OrganizationSerializer(many=True)}
+    )
     def post(self, request):
         serializer = OrganizationSerializer(data=request.data, many=True)
         if serializer.is_valid():
