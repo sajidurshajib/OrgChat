@@ -5,6 +5,8 @@ from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import get_user_model
 from .serializers import RegisterSerializer, UserSerializer, RoleSerializer
 from .models import Role
+from .tasks import send_email_task
+
 
 User = get_user_model()
 
@@ -27,3 +29,16 @@ class UpdateOwnRoleView(generics.RetrieveUpdateAPIView):
 
     def get_object(self):
         return Role.objects.get(user=self.request.user)
+
+    
+
+# class EmailAPI(APIView):
+#     def post(self, request):
+#         subject = request.data.get('subject')
+#         message = request.data.get('message')
+#         recipients = request.data.get('recipients', [])
+
+#         for recipient in recipients:
+#             send_email_task.delay(subject, message, 'noreply@example.com', [recipient])
+
+#         return Response({"status": "Emails dispatched"})
